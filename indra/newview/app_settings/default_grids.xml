@@ -36,7 +36,24 @@
       <key>render_compat</key><boolean>0</boolean>
       <key>auto_update</key><boolean>0</boolean>
     </map>
-
+    <!-- VIRTUALNEXUS-->
+       <map>
+        <key>auto_update</key><boolean>0</boolean>
+        <key>gridname</key><string>Virtual-Nexus</string>
+        <key>gridnick</key><string>virtualnexus</string>
+        <key>helperuri</key><string>https://grid.virtual-nexus.xyz:8009/</string>
+        <key>locked</key><boolean>0</boolean>
+        <key>loginpage</key><string>https://www.virtual-nexus.xyz/loginscreen/</string>
+        <key>loginuri</key><string>https://grid.virtual-nexus.xyz/</string>
+        <key>partner</key><string />
+        <key>password</key><string>https://www.virtual-nexus.xyz/?page=pass</string>
+        <key>platform</key><string>WhiteCore</string>
+        <key>register</key><string>https://www.virtual-nexus.xyz/?page=register/string>
+        <key>render_compat</key><boolean>1</boolean>
+        <key>search</key><string />
+        <key>support</key><string>https://www.virtual-nexus.xyz/?page=help</string>
+        <key>website</key><string>https://www.virtual-nexus.xyz</string>
+        </map>
     <!-- OSGrid -->
     <map>
       <key>auto_update</key> <boolean>0</boolean>
