@@ -97,6 +97,11 @@ void HippoGridInfo::setPlatform(Platform platform)
 		mCurrencySymbol = "L$";
 		mCurrencyText = "Linden Dollars";
 	}
+	else if (mGridNick == "virtualnexus")
+	{
+		mCurrencySymbol = "VN$";
+		mCurrencyText = "VirtualNexus Dollars";
+	}
 }
 
 
@@ -152,11 +157,15 @@ void HippoGridInfo::setGridNick(std::string gridNick)
 	}
 	if(gridNick == "secondlife")
 	{
-		mIsInProductionGrid = true;
+		mIsInProductionGrid = false;
 	}
 	else if(gridNick == "avination")
 	{
 		mIsInAvination = true;
+	}
+	else if (gridNick == "virtualnexus")
+	{
+		mIsInProductionGrid = true;
 	}
 }
 
@@ -174,7 +183,7 @@ void HippoGridInfo::setLoginUri(const std::string& loginUri)
 	mLoginUri = sanitizeUri(loginUri);
 	if (utf8str_tolower(LLURI(mLoginUri).hostName()) == "login.agni.lindenlab.com")
 	{
-		mIsInProductionGrid = true;
+	
 		useHttps();
 		setPlatform(PLATFORM_SECONDLIFE);
 	}
@@ -182,6 +191,12 @@ void HippoGridInfo::setLoginUri(const std::string& loginUri)
 	{
 		useHttps();
 		setPlatform(PLATFORM_SECONDLIFE);
+	}
+	else if (utf8str_tolower(LLURI(mLoginUri).hostName()) == "grid.virtual-nexus.xyz")
+	{
+		mIsInProductionGrid = true;
+		useHttps();
+		setPlatform(PLATFORM_WHITECORE);
 	}
 	else if (utf8str_tolower(LLURI(mLoginUri).hostName()) == "login.avination.com" ||
 		utf8str_tolower(LLURI(mLoginUri).hostName()) == "login.avination.net")
@@ -730,9 +745,9 @@ void HippoGridManager::setDefaultGrid(const std::string& grid)
 	{
 		mDefaultGrid = grid;
 	} 
-	else if (mGridInfo.find("Second life") != mGridInfo.end()) 
+	else if (mGridInfo.find("Virtual-Nexus") != mGridInfo.end()) 
 	{
-		mDefaultGrid = "Second Life";
+		mDefaultGrid = "Virtual-Nexus";
 	} 
 	else if (!mGridInfo.empty()) 
 	{
@@ -921,6 +936,7 @@ void HippoGridManager::saveFile()
 
 	// build LLSD
 	LLSD gridInfo;
+	gridInfo[0]["default_grids_version"] = mDefaultGridsVersion;
 	gridInfo[0]["default_grids_version"] = mDefaultGridsVersion;
 
 	// add grids
