@@ -507,6 +507,8 @@ void LLEnvManagerNew::onRegionSettingsResponse(const LLSD& content)
 	// reset
 	if (!gHippoGridManager->getConnectedGrid()->isWhiteCore()) // On WhiteCore, the region says when to refresh
 		mInterpNextChangeMessage = false;
+	if (!gHippoGridManager->getConnectedGrid()->isVirtualNexus()) // On WhiteCore, the region says when to refresh
+		mInterpNextChangeMessage = false;
 }
 
 void LLEnvManagerNew::onRegionSettingsApplyResponse(bool ok)

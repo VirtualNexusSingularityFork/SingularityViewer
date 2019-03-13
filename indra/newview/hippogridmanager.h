@@ -29,14 +29,16 @@ public:
 		PLATFORM_WHITECORE,
 		PLATFORM_OPENSIM,
 		PLATFORM_SECONDLIFE,
+		PLATFORM_VIRTUALNEXUS,
 		PLATFORM_LAST
 	};
 
 	explicit HippoGridInfo(const std::string& gridName);
 
 	Platform getPlatform() { return mPlatform; }
-	bool isOpenSimulator() const { return (mPlatform == PLATFORM_OPENSIM || mPlatform == PLATFORM_WHITECORE); }
+	bool isOpenSimulator() const { return (mPlatform == PLATFORM_OPENSIM || mPlatform == PLATFORM_WHITECORE || mPlatform == PLATFORM_VIRTUALNEXUS); }
 	bool isWhiteCore() const { return (mPlatform == PLATFORM_WHITECORE); }
+	bool isVirtualNexus() const { return (mPlatform == PLATFORM_VIRTUALNEXUS);  }
 	bool isSecondLife() const { return (mPlatform == PLATFORM_SECONDLIFE); }
 	bool isAvination() const { return mIsInAvination; }
 	bool isInProductionGrid() const { llassert(mPlatform == PLATFORM_SECONDLIFE); return mIsInProductionGrid; } // Should only be called if isSecondLife() returns true.

@@ -105,6 +105,8 @@ static bool nameSplit(const std::string& full, std::string& first, std::string& 
 		return false;
 	first = fragments[0];
 	last = (fragments.size() == 1) ?
+		gHippoGridManager->getCurrentGrid()->isVirtualNexus()? "" : "Resident" :
+	last = (fragments.size() == 1) ?
 		gHippoGridManager->getCurrentGrid()->isWhiteCore() ? "" : "Resident" :
 		fragments[1];
 	return (fragments.size() <= 2);
@@ -914,6 +916,10 @@ void LLPanelLogin::loadLoginPage()
 		params["grid"] = gHippoGridManager->getCurrentGrid()->getGridNick();
 	}
 	else if (gHippoGridManager->getCurrentGrid()->getPlatform() == HippoGridInfo::PLATFORM_WHITECORE)
+	{
+		params["grid"] = LLViewerLogin::getInstance()->getGridLabel();
+	}
+	else if (gHippoGridManager->getCurrentGrid()->getPlatform() == HippoGridInfo::PLATFORM_VIRTUALNEXUS)
 	{
 		params["grid"] = LLViewerLogin::getInstance()->getGridLabel();
 	}

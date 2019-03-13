@@ -15,7 +15,7 @@
         <key>loginuri</key><string>https://grid.virtual-nexus.xyz/</string>
         <key>partner</key><string />
         <key>password</key><string>https://www.virtual-nexus.xyz/?page=pass</string>
-        <key>platform</key><string>WhiteCore</string>
+        <key>platform</key><string>virtualnexus</string>
         <key>register</key><string>https://www.virtual-nexus.xyz/?page=register</string>
         <key>render_compat</key><boolean>1</boolean>
         <key>search</key><string />

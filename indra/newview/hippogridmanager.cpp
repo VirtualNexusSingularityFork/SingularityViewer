@@ -97,7 +97,7 @@ void HippoGridInfo::setPlatform(Platform platform)
 		mCurrencySymbol = "L$";
 		mCurrencyText = "Linden Dollars";
 	}
-	else if (mGridNick == "virtualnexus")
+	else if (mPlatform == PLATFORM_VIRTUALNEXUS)
 	{
 		mCurrencySymbol = "VN$";
 		mCurrencyText = "VirtualNexus Dollars";
@@ -114,6 +114,10 @@ void HippoGridInfo::setPlatform(const std::string& platform)
 	{
 		setPlatform(PLATFORM_WHITECORE);
 	} 
+	else if (tmp == "virtualnexus")
+	{
+		setPlatform(PLATFORM_VIRTUALNEXUS);
+	}
 	else if (tmp == "opensim") 
 	{
 		setPlatform(PLATFORM_OPENSIM);
@@ -196,7 +200,7 @@ void HippoGridInfo::setLoginUri(const std::string& loginUri)
 	{
 		mIsInProductionGrid = true;
 		useHttps();
-		setPlatform(PLATFORM_WHITECORE);
+		setPlatform(PLATFORM_VIRTUALNEXUS);
 	}
 	else if (utf8str_tolower(LLURI(mLoginUri).hostName()) == "login.avination.com" ||
 		utf8str_tolower(LLURI(mLoginUri).hostName()) == "login.avination.net")
@@ -507,7 +511,7 @@ const char* HippoGridInfo::getPlatformString(Platform platform)
 {
 	constexpr const char* platformStrings[PLATFORM_LAST] =
 	{
-		"Other", "WhiteCore", "OpenSim", "SecondLife"
+		"Other", "WhiteCore", "OpenSim", "SecondLife", "VirtualNexus"
 	};
 
 	if ((platform < PLATFORM_OTHER) || (platform >= PLATFORM_LAST))

@@ -544,6 +544,8 @@ BOOL LLManipTranslate::handleHover(S32 x, S32 y, MASK mask)
 
 		if (gHippoGridManager->getConnectedGrid()->isWhiteCore())
 			max_drag_distance = llmin(10000.f, max_drag_distance);
+		if (gHippoGridManager->getConnectedGrid()->isVirtualNexus())
+			max_drag_distance = llmin(10000.f, max_drag_distance);
 
 		if (relative_move.magVecSquared() > max_drag_distance * max_drag_distance)
 		{

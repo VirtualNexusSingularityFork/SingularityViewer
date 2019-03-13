@@ -23,6 +23,9 @@ void HippoLimits::setLimits()
 		setSecondLifeLimits();
 	} else if (gHippoGridManager->getConnectedGrid()->getPlatform() == HippoGridInfo::PLATFORM_WHITECORE) {
 		setWhiteCoreLimits();
+	}
+	else if (gHippoGridManager->getConnectedGrid()->getPlatform() == HippoGridInfo::PLATFORM_VIRTUALNEXUS) {
+		setWhiteCoreLimits();
 	} else {
 		setOpenSimLimits();
 	}
